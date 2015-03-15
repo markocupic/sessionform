@@ -1,0 +1,12 @@
+<?php $this->extend('form_row'); ?>
+
+<?php $this->block('label'); ?>
+<label for="ctrl_<?php echo $this->id; ?>"><?php echo $this->label; ?></label>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+<input type="hidden" name="<?php echo $this->name; ?>" value="<?php echo specialchars($_SESSION['FORM_DATA'][$this->name]); ?>">
+<div class="<?php if($this->class) echo $this->class . ' '; ?>sessionformfield"><span><?php echo $this->valueFromSession; ?></span></div>
+<?php $this->endblock(); ?>
+
+

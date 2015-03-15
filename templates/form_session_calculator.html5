@@ -1,0 +1,10 @@
+<?php $this->extend('form_row'); ?>
+<?php $this->block('label'); ?>
+<label for="ctrl_<?php echo $this->id; ?>"><?php echo $this->label; ?></label>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+<input type="hidden" name="<?php echo $this->name; ?>" value="<?php echo $this->amount; ?>">
+<?php $amount =  $this->currencyPosition == 'right' ? $this->amount . ' ' . $this->currency : $this->currency . ' ' .  $this->amount; ?>
+<div class="<?php if($this->class) echo $this->class . ' '; ?>sessionformfield"><span><?php echo $amount; ?></span></div>
+<?php $this->endblock(); ?>

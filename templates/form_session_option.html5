@@ -1,0 +1,31 @@
+<?php $this->extend('form_row'); ?>
+
+<?php if (!is_array($this->getOptionsValues())): ?>
+
+<?php $this->block('label'); ?>
+<label for="ctrl_<?php echo $this->id; ?>"><?php echo $this->label; ?></label>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+<input type="hidden" name="<?php echo $this->fieldname; ?>" value="<?php echo specialchars($this->getOptionsValues()); ?>">
+<div class="<?php if ($this->class) echo $this->class . ' '; ?>sessionformfield">
+    <?php echo $this->getFormatedOptions('<span>%s, </span>'); ?>
+</div>
+<?php $this->endblock(); ?>
+
+<?php else: ?>
+
+<?php $this->block('label'); ?>
+<label for="ctrl_<?php echo $this->id; ?>"><?php echo $this->label; ?></label>
+<?php $this->endblock(); ?>
+
+<?php $this->block('field'); ?>
+<?php foreach($this->getOptionsValues() as $k => $v): ?>
+<input type="hidden" name="<?php echo $this->fieldname; ?>[<?php echo $k; ?>]" value="<?php echo specialchars($v); ?>">
+<?php endforeach; ?>
+<div class="<?php  if ($this->class) echo $this->class . ' '; ?>sessionformfield">
+    <?php echo $this->getFormatedOptions('<span>%s, </span>'); ?>
+</div>
+<?php $this->endblock(); ?>
+
+<?php endif; ?>
